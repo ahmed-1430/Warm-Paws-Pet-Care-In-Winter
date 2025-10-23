@@ -7,7 +7,7 @@ const HomeLayout = () => {
     return (
         <div className='flex flex-col h-screen'>
             <header>
-                <nav>
+                <nav className='z-50 relative'>
                     <Navbar></Navbar>
                 </nav>
             </header>

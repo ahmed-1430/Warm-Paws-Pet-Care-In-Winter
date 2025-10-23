@@ -37,7 +37,7 @@ const Navbar = () => {
                             <li><Link to="/profile" className={location.pathname === '/profile' ? 'active' : ''}>My Profile</Link></li>
                         </ul>
                     </div>
-                    <div className="dropdown dropdown-end">
+                    <div className="dropdown dropdown-end z-10">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img
@@ -46,7 +46,7 @@ const Navbar = () => {
                                 />
                             </div>
                         </div>
-                        <ul tabIndex={0} className="mt-3 z-1 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                             <li>
                                 <span className="text-sm font-semibold"></span>
                             </li>

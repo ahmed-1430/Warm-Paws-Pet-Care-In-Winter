@@ -2,8 +2,6 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Link } from 'react-router';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -39,8 +37,8 @@ const CarouselSlider = () => {
   };
 
   return (
-    <div>
-      <section>
+    <div className="relative z-0">
+      <section className='my-8'>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -53,26 +51,29 @@ const CarouselSlider = () => {
           }}
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper h-[450px]"
+          className="mySwiper h-[450px] z-0"
         >
           {heroImages.map((slide) => (
             <SwiperSlide key={slide.id}>
-              {/* Using img tag instead of background for better error handling */}
-              <div className="hero min-h-screen relative z-10">
+              <div className="relative h-full w-full z-0">
                 <img 
                   src={slide.image} 
                   alt={slide.title}
-                  className="absolute inset-0 w-full h-[450px] object-fit"
+                  className="w-full h-full object-cover z-0"
                   onError={(e) => handleImageError(e, slide.fallback)}
-                />
-                {/* <div className="hero-overlay bg-opacity-60 absolute inset-0 bg-black"></div> */}
-                {/* <div className="hero-content text-center text-neutral-content relative z-10">
-                  <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold text-zinc-500">{slide.title}</h1>
-                    <p className="mb-5 text-lg">{slide.subtitle}</p>
-                    <Link to="/services" className="btn btn-primary">Explore Services</Link>
+                />                
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 z-10">
+                  <div className="text-white text-center">
+                    <h2 className="text-2xl font-bold mb-2">{slide.title}</h2>
+                    <p className="mb-4">{slide.subtitle}</p>
+                    <Link 
+                      to="/services" 
+                      className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors"
+                    >
+                      Explore Services
+                    </Link>
                   </div>
-                </div> */}
+                </div>
               </div>
             </SwiperSlide>
           ))}
