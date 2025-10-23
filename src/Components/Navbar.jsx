@@ -23,7 +23,7 @@ const Navbar = () => {
                     </div>
                     <Link to="/" className="btn btn-ghost text-xl">
                         <img src="https://i.ibb.co.com/0psSBmRW/petcare.png" alt="Winter Pet Care" className="h-12 mr-2" />
-                        WarmPaws – Pet Care in Winter
+                        WarmPaws
                     </Link>
                 </div>
 

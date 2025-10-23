@@ -1,11 +1,13 @@
 import React from 'react';
+import CarouselSlider from '../Components/CarouselSlider';
+
 
 const Home = () => {
-    return (
-        <div>
-            <h1>Home Page</h1>
-        </div>
-    );
+  return (
+    <div className='w-11/12 mx-auto'>
+        <CarouselSlider></CarouselSlider>      
+    </div>
+  );
 };
 
 export default Home;
