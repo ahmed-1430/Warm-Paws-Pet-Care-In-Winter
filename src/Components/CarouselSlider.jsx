@@ -38,7 +38,7 @@ const CarouselSlider = () => {
 
   return (
     <div className="relative z-0">
-      <section className='my-8'>
+      <section className='pt-8'>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
