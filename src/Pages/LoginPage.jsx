@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 const LoginPage = () => {
     return (
         <div>
-            <div className="min-h-screen flex items-center justify-center bg-base-200 py-12">
-                <div className="card w-full max-w-md shadow-2xl bg-base-100">
+            <div className="min-h-screen flex items-center justify-center py-12">
+                <div className="card w-full max-w-md shadow-2xl bg-base-200 border-2 border-zinc-200">
                     <div className="card-body">
                         <h2 className="card-title text-3xl font-bold justify-center mb-6">Login</h2>
 
