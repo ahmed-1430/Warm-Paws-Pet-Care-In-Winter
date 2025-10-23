@@ -1,0 +1,98 @@
+[
+  {
+    "serviceId": 1,
+    "serviceName": "Winter Coat Fitting for Dogs",
+    "providerName": "PawCare Studio",
+    "providerEmail": "info@pawcare.com",
+    "price": 25,
+    "rating": 4.9,
+    "slotsAvailable": 4,
+    "description": "Custom coat fitting and warm outfit options to keep your dog comfortable in the cold. Our experts will measure your dog and recommend the perfect winter gear.",
+    "image": "https://i.postimg.cc/8CQpQ4yN/winter-coat.jpg",
+    "category": "Clothing"
+  },
+  {
+    "serviceId": 2,
+    "serviceName": "Winter Grooming & Paw Treatment",
+    "providerName": "CozyPets Grooming",
+    "providerEmail": "hello@cozypets.com",
+    "price": 30,
+    "rating": 4.8,
+    "slotsAvailable": 3,
+    "description": "Professional grooming with moisturizing paw balm and winter-safe shampoo. Includes nail trimming and ear cleaning.",
+    "image": "https://i.postimg.cc/8CQpQ4yN/grooming.jpg",
+    "category": "Grooming"
+  },
+  {
+    "serviceId": 3,
+    "serviceName": "Heated Pet Bed Installation",
+    "providerName": "WarmPets Solutions",
+    "providerEmail": "service@warmpets.com",
+    "price": 45,
+    "rating": 4.7,
+    "slotsAvailable": 6,
+    "description": "Professional installation of safe, energy-efficient heated beds for your pets. We ensure proper temperature control and safety features.",
+    "image": "https://i.postimg.cc/8CQpQ4yN/heated-bed.jpg",
+    "category": "Comfort"
+  },
+  {
+    "serviceId": 4,
+    "serviceName": "Winter Nutrition Consultation",
+    "providerName": "PetHealth Nutritionists",
+    "providerEmail": "consult@pethealth.com",
+    "price": 35,
+    "rating": 4.9,
+    "slotsAvailable": 5,
+    "description": "Personalized dietary advice for winter months. Learn how to adjust your pet's nutrition for optimal health in cold weather.",
+    "image": "https://i.postimg.cc/8CQpQ4yN/nutrition.jpg",
+    "category": "Health"
+  },
+  {
+    "serviceId": 5,
+    "serviceName": "Indoor Exercise Program",
+    "providerName": "ActivePets Training",
+    "providerEmail": "train@activepets.com",
+    "price": 40,
+    "rating": 4.6,
+    "slotsAvailable": 8,
+    "description": "Custom indoor exercise routines to keep your pet active during winter. Includes mental stimulation games and physical activities.",
+    "image": "https://i.postimg.cc/8CQpQ4yN/exercise.jpg",
+    "category": "Exercise"
+  },
+  {
+    "serviceId": 6,
+    "serviceName": "Emergency Winter Care Kit",
+    "providerName": "PetSafety First",
+    "providerEmail": "safety@petsafety.com",
+    "price": 50,
+    "rating": 4.8,
+    "slotsAvailable": 10,
+    "description": "Comprehensive winter emergency kit for pets. Includes first aid supplies, warming items, and emergency contact information.",
+    "image": "https://i.postimg.cc/8CQpQ4yN/emergency-kit.jpg",
+    "category": "Safety"
+  },
+  {
+    "serviceId": 7,
+    "serviceName": "Winter Paw Protection",
+    "providerName": "PawGuard Specialists",
+    "providerEmail": "care@pawguard.com",
+    "price": 20,
+    "rating": 4.7,
+    "slotsAvailable": 7,
+    "description": "Specialized paw care treatment including protective wax application and bootie fitting to protect from ice and salt.",
+    "image": "https://i.postimg.cc/8CQpQ4yN/paw-care.jpg",
+    "category": "Grooming"
+  },
+  {
+    "serviceId": 8,
+    "serviceName": "Winter Pet Photography",
+    "providerName": "SnowyPaws Photography",
+    "providerEmail": "bookings@snowypaws.com",
+    "price": 75,
+    "rating": 4.9,
+    "slotsAvailable": 2,
+    "description": "Professional winter-themed photo sessions for your pets. Capture beautiful memories in snowy settings.",
+    "image": "https://i.postimg.cc/8CQpQ4yN/photography.jpg",
+    "category": "Entertainment"
+  }
+]
