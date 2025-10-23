@@ -1,9 +1,11 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import HomeLayout from "../Layouts/HomeLayout";
 import Home from "../Pages/Home";
 import Loading from '../Pages/Loading'
 import ServicesLayout from "../Layouts/ServicesLayout";
 import Services from "../Pages/Services";
+import LoginLayout from "../Layouts/LoginLayout";
+import LoginPage from "../Pages/LoginPage";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +34,24 @@ const router = createBrowserRouter([
                 
             }
         ]
+    },
+    {
+        path: "/user",
+        element: <LoginLayout></LoginLayout>,
+        children: [
+            {
+                path: "/user/login",
+                element: <LoginPage></LoginPage>
+            },
+            {
+                path: "/user/register",
+                element: <p>register</p>
+            }
+        ]
+    },
+    {
+        path: "/*",
+        element: <h1>404</h1>
     }
 ])
 export default router;

@@ -17,9 +17,9 @@ const Navbar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3  p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to="/" className={`${location.pathname === '' ? 'active' : ''}, active:bg-red-500`}>Home</Link></li>
                             <li><Link to="/services" className={location.pathname == '/services' ? 'active' : ''}>Services</Link></li>
-                            <li><Link to="/login" className={location.pathname == '/login' ? 'active' : ''}>Login</Link></li>
-                            <li><Link to="/register" className={location.pathname == '/register' ? 'active' : ''}>Register</Link></li>
-                            <li><Link to="/profile" className={location.pathname == '/profile' ? 'active' : ''}>My Profile</Link></li>
+                            <li><Link to="/user/login" className={location.pathname == '/login' ? 'active' : ''}>Login</Link></li>
+                            <li><Link to="/user/register" className={location.pathname == '/register' ? 'active' : ''}>Register</Link></li>
+                            <li><Link to="/user/profile" className={location.pathname == '/profile' ? 'active' : ''}>My Profile</Link></li>
                         </ul>
                     </div>
                     <Link to="/" className="btn btn-ghost text-xl">
@@ -33,9 +33,9 @@ const Navbar = () => {
                         <ul className="menu menu-horizontal px-1">
                             <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
                             <li><Link to="/services" className={location.pathname === '/services' ? 'active' : ''}>Services</Link></li>
-                            <li><Link to="/services" className={location.pathname === '/services' ? 'active' : ''}>Login</Link></li>
-                            <li><Link to="/services" className={location.pathname === '/services' ? 'active' : ''}>Register</Link></li>
-                            <li><Link to="/profile" className={location.pathname === '/profile' ? 'active' : ''}>My Profile</Link></li>
+                            <li><Link to="/user/login" className={location.pathname === '/services' ? 'active' : ''}>Login</Link></li>
+                            <li><Link to="/user/register" className={location.pathname === '/services' ? 'active' : ''}>Register</Link></li>
+                            <li><Link to="/user/profile" className={location.pathname === '/profile' ? 'active' : ''}>My Profile</Link></li>
                         </ul>
                     </div>
                     <div className="dropdown dropdown-end z-10">
