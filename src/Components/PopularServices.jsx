@@ -1,15 +1,17 @@
 import React from 'react';
-import popularServices from '../../public/Services.json'
-import { Link } from 'react-router';
+// import popularServices from '../../public/Services.json'
+import { Link, } from 'react-router';
 
-const PopularServices = () => {
+const PopularServices = ({data}) => {
+  const popularServices = data.filter((service=> service.rating >= '4.8'));
+
     return (
         <div>
              <section className="py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">Popular Winter Care Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {popularServices.filter(service => service.rating >= '4.8').map((service) => (
+            {popularServices.map((service) => (
               <div key={service.serviceId} className="card bg-base-100 shadow-xl">
                 <figure className="px-4 pt-4">
                   <img 

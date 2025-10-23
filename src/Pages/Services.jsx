@@ -1,22 +1,18 @@
 import React from 'react';
-import popularServices from '../../public/Services.json'
-import { Link } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 
 const Services = () => {
+    const allServices = useLoaderData();
     return (
         <div>
             <section className="py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">All Care Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {popularServices.map((service) => (
+            {allServices.map((service) => (
               <div key={service.serviceId} className="card bg-base-100 shadow-xl border-2 border-zinc-100">
                 <figure className="px-4 pt-4">
-                  <img 
-                    src={service.image} 
-                    alt={service.serviceName} 
-                    className="rounded-xl h-48 w-full object-cover"
-                  />
+                  <img  src={service.image} alt={service.serviceName}className="rounded-xl h-48 w-full object-cover"/>
                 </figure>
                 <div className="card-body">
                   <h3 className="card-title">{service.serviceName}</h3>
@@ -24,13 +20,7 @@ const Services = () => {
                     <div className="rating rating-sm">
                       {[...Array(5)].map((_, i) => (
                         <input 
-                          key={i}
-                          type="radio" 
-                          name={`rating-${service.serviceId}`} 
-                          className="mask mask-star-2 bg-orange-400" 
-                          checked={i < Math.floor(service.rating)}
-                          readOnly
-                        />
+                          key={i} type="radio" name={`rating-${service.serviceId}`} className="mask mask-star-2 bg-orange-400" checked={i < Math.floor(service.rating)} readOnly />
                       ))}
                     </div>
                     <span className="ml-2 text-sm">({service.rating})</span>
@@ -38,11 +28,7 @@ const Services = () => {
                   <p className="text-xl font-bold text-primary">${service.price}</p>
                   <div className="card-actions justify-end">
                     <Link 
-                      to={`/services/${service.serviceId}`} 
-                      className="btn btn-primary btn-sm"
-                    >
-                      View Details
-                    </Link>
+                      to={`/services/${service.serviceId}`} className="btn btn-primary btn-sm"> View Details </Link>
                   </div>
                 </div>
               </div>

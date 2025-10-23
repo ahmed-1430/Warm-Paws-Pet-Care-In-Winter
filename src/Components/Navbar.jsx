@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 const Navbar = () => {
+    const location = useLocation();
     return (
         <div>
             <div className="navbar bg-base-100 shadow-md sticky top-0">
@@ -14,7 +15,7 @@ const Navbar = () => {
                             </svg>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3  p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
+                            <li><Link to="/" className={`${location.pathname === '' ? 'active' : ''}, active:bg-red-500`}>Home</Link></li>
                             <li><Link to="/services" className={location.pathname == '/services' ? 'active' : ''}>Services</Link></li>
                             <li><Link to="/login" className={location.pathname == '/login' ? 'active' : ''}>Login</Link></li>
                             <li><Link to="/register" className={location.pathname == '/register' ? 'active' : ''}>Register</Link></li>

@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import HomeLayout from "../Layouts/HomeLayout";
 import Home from "../Pages/Home";
+import Loading from '../Pages/Loading'
 import ServicesLayout from "../Layouts/ServicesLayout";
 import Services from "../Pages/Services";
 
@@ -11,7 +12,10 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: ()=> fetch('/Services.json'),
+                hydrateFallbackElement: <Loading></Loading>
+                
             }
         ]
         
@@ -22,7 +26,10 @@ const router = createBrowserRouter([
         children:[
             {
                 path: "",
-                element: <Services></Services>
+                element: <Services></Services>,
+                loader: ()=> fetch('/Services.json'),
+                hydrateFallbackElement: <Loading></Loading>
+                
             }
         ]
     }
