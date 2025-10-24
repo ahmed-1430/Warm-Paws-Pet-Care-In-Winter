@@ -8,6 +8,8 @@ import LoginLayout from "../Layouts/LoginLayout";
 import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
 import Profile from "../Pages/Profile";
+import ServiceDetails from "../Pages/ServiceDetails";
+import ServiceDetailsLayout from "../Layouts/ServiceDetailsLayout";
 
 const router = createBrowserRouter([
     {
@@ -17,23 +19,23 @@ const router = createBrowserRouter([
             {
                 path: "",
                 element: <Home></Home>,
-                loader: ()=> fetch('/Services.json'),
+                loader: () => fetch('/Services.json'),
                 hydrateFallbackElement: <Loading></Loading>
-                
+
             }
         ]
-        
+
     },
     {
         path: "/services",
         element: <ServicesLayout></ServicesLayout>,
-        children:[
+        children: [
             {
                 path: "",
                 element: <Services></Services>,
-                loader: ()=> fetch('/Services.json'),
+                loader: () => fetch('/Services.json'),
                 hydrateFallbackElement: <Loading></Loading>
-                
+
             }
         ]
     },
@@ -54,6 +56,19 @@ const router = createBrowserRouter([
                 element: <Profile></Profile>
             }
         ]
+    },
+    {
+        path: "services/category/:id",
+        element: <ServiceDetailsLayout></ServiceDetailsLayout>,
+        children: [
+            {
+                path: "",
+                element: <ServiceDetails></ServiceDetails>,
+                loader: () => fetch('/Services.json'),
+                hydrateFallbackElement: <Loading></Loading>,
+            }
+        ]
+
     },
     {
         path: "/*",

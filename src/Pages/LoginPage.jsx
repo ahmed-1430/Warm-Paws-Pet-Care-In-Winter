@@ -1,5 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router';
+import {AuthContext} from '../Provider/AuthProvider'
 
 const LoginPage = () => {
     return (
@@ -39,7 +39,7 @@ const LoginPage = () => {
                 </div>
             </div>
         </div>
-    );
+    )
 };
 
 export default LoginPage;

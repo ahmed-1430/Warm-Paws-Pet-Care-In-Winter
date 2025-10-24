@@ -28,7 +28,7 @@ const Services = () => {
                   <p className="text-xl font-bold text-primary">${service.price}</p>
                   <div className="card-actions justify-end">
                     <Link 
-                      to={`/services/${service.serviceId}`} className="btn btn-primary btn-sm"> View Details </Link>
+                      to={`/services/category/${service.serviceId}`} className="btn btn-primary btn-sm"> View Details </Link>
                   </div>
                 </div>
               </div>

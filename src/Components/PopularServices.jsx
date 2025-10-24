@@ -1,5 +1,4 @@
 import React from 'react';
-// import popularServices from '../../public/Services.json'
 import { Link, } from 'react-router';
 
 const PopularServices = ({data}) => {
@@ -40,7 +39,7 @@ const PopularServices = ({data}) => {
                   <p className="text-xl font-bold text-primary">${service.price}</p>
                   <div className="card-actions justify-end">
                     <Link 
-                      to={`/services/${service.serviceId}`} 
+                      to={`/services/category/${service.serviceId}`} 
                       className="btn btn-primary btn-sm"
                     >
                       View Details

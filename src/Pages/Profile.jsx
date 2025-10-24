@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { use } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Profile = () => {
+    const {user} = use(AuthContext);
     return (
         <div>
             <div className="min-h-screen  py-8 px-4">
@@ -17,13 +19,13 @@ const Profile = () => {
                             <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-8">
                                 <div className="text-center">
                                     <div className="relative inline-block mb-4">
-                                        <div className="w-32 h-32 rounded-full bg-linear-to-r from-blue-500 to-purple-500 p-1">
-                                            <img src={`https://i.ibb.co.com/nNbBbftF/Dr-Emily-Rodriguez.webp`} alt="Profile" className="w-full h-full rounded-full object-cover border-4 border-white" />
+                                        <div className="w-50 h-50 rounded-full bg-linear-to-r from-blue-500 to-purple-500 p-1">
+                                            <img src={user.photo} alt="Profile" className="w-full h-full rounded-full object-cover border-4 border-white" />
                                         </div>
-                                        <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 rounded-full border-2 border-white"></div>
+                                        <div className="absolute bottom-7 right-3 w-6 h-6 bg-green-500 rounded-full border-2 border-white"></div>
                                     </div>
 
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-2">{`Ahmed test`}</h2>
+                                    <h2 className="text-2xl font-bold text-gray-900 mb-2">{user.name}</h2>
                                     <p className="text-gray-600 mb-1">{`Ahmed@mail.com`}</p>
                                     
                                 </div>

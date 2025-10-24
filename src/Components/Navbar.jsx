@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, useLocation } from 'react-router';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Navbar = () => {
+    const {user} = use(AuthContext);
     const location = useLocation();
     return (
         <div>
@@ -43,13 +45,13 @@ const Navbar = () => {
                                 <div className="w-10 rounded-full">
                                     <img
                                         alt="User Avatar"
-                                        src="https://img.icons8.com/?size=160&id=IBgUXg3MQlTW&format=png"
+                                        src={user.photo}
                                     />
                                 </div>
                             </div>
                             <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                                 <li>
-                                    <span className="text-sm font-semibold"></span>
+                                    <span className="text-sm font-semibold">{user.name}</span>
                                 </li>
                                 <li><Link to="/profile">My Profile</Link></li>
                                 <li><button>Logout</button></li>
