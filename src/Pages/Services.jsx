@@ -10,7 +10,7 @@ const Services = () => {
           <h2 className="text-4xl font-bold text-center mb-12">All Care Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {allServices.map((service) => (
-              <div key={service.serviceId} className="card bg-base-100 shadow-xl border-2 border-zinc-100">
+              <div key={service.serviceId} className="card bg-base-100 shadow-xl ">
                 <figure className="px-4 pt-4">
                   <img  src={service.image} alt={service.serviceName}className="rounded-xl h-48 w-full object-cover"/>
                 </figure>

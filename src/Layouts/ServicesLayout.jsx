@@ -6,7 +6,7 @@ import Footer from '../Components/Footer';
 
 const ServicesLayout = () => {
     return (
-        <div className='flex flex-col h-screen'>
+        <div className='flex flex-col h-fit bg-linear-to-br from-slate-50 to-blue-50'>
             <header>
                 <Navbar></Navbar>
             </header>
