@@ -1,9 +1,11 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
-import { Outlet } from 'react-router';
+import { Outlet, useNavigate } from 'react-router';
 import { ToastContainer } from 'react-toastify';
+import LoadingPage from '../Pages/Loading';
 
 const ServiceDetailsLayout = () => {
+    const { state } = useNavigate()
     return (
         <div>
             <header>
@@ -11,7 +13,10 @@ const ServiceDetailsLayout = () => {
             </header>
             <main>
                 <ToastContainer></ToastContainer>
-                <Outlet></Outlet>
+                {
+                    state == "loading" ? <LoadingPage></LoadingPage> : <Outlet></Outlet>
+                }
+                
             </main>
             
         </div>
