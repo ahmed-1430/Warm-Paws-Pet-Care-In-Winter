@@ -11,6 +11,7 @@ import Profile from "../Pages/Profile";
 import ServiceDetails from "../Pages/ServiceDetails";
 import ServiceDetailsLayout from "../Layouts/ServiceDetailsLayout";
 import EditProfile from "../Pages/EditProfile";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -54,17 +55,17 @@ const router = createBrowserRouter([
             },
             {
                 path: "/user/profile",
-                element: <Profile></Profile>
+                element: <PrivateRoute> <Profile></Profile> </PrivateRoute>, /* i think and should have to private profile and edit profile page.....  */
             },
             {
                 path: "/user/profile/edit-profile",
-                element: <EditProfile></EditProfile>
+                element: <PrivateRoute> <EditProfile></EditProfile> </PrivateRoute>
             }
         ]
     },
     {
         path: "services/category/:id",
-        element: <ServiceDetailsLayout></ServiceDetailsLayout>,
+        element: <PrivateRoute> <ServiceDetailsLayout></ServiceDetailsLayout> </PrivateRoute>,
         children: [
             {
                 path: "",

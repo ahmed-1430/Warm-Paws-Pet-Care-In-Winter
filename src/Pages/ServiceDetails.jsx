@@ -25,7 +25,7 @@ const ServiceDetails = () => {
                             <img
                                 src={service.image}
                                 alt={service.serviceName}
-                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                className="w-full h-full object-fit transition-transform duration-300 hover:scale-105"
                             />
                         </figure>
                         <div className="card-body p-6">
