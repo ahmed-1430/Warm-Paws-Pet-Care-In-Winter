@@ -37,7 +37,7 @@ const RegisterPage = () => {
                 const user = result.user;
                 return updateUser({ displayName: name, photoURL: photo }).then(() => {
                     setUser({ ...user, displayName: name, photoURL: photo });
-                    toast.success('Successfully Registered ✅');
+                    toast.success('Successfully Registered');
                     form.reset();                    
                     setTimeout(() => {
                         navigate('/');

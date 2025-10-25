@@ -1,16 +1,84 @@
-# React + Vite
+#  WarmPaws – Pet Care in Winter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### **Assignment Category:** Assignment-09_category_rose  
+**Theme:** A cozy winter companion platform designed for pet owners to ensure their furry friends stay warm, safe, and healthy during the cold season.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Live Demo
+ [Live Site URL](https://b-12a-09-warm-paws-pet-care.web.app/)  
+ [GitHub Repository](https://github.com/programming-hero-web-course2/b12-a9-firesheild-ahmed-1430)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+##  Project Purpose
 
-## Expanding the ESLint configuration
+**WarmPaws** is a single-page React web application built to help pet owners take extra care of their furry companions during the winter season.  
+It brings together everything in one cozy interface — from **local pet care services**, **winter clothing**, **grooming options**, to **expert vet tips** — making it a friendly and reliable winter guide for pet lovers.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+##  Key Features
+
+###  **Home Page**
+- A warm, winter-themed **hero carousel** built using **Swiper.js**.
+- **Popular Winter Services** section that dynamically displays JSON-based service data.
+- **Winter Care Tips**, **Expert Vets**, and **Winter Pet Products** sections, all animated with **AOS**.
+- Fully responsive layout across mobile, tablet, and desktop.
+
+###  **Authentication System**
+- **Login** and **Signup** pages with:
+  - Firebase Authentication
+  - Google Social Login
+  - Password validation (Uppercase, Lowercase, Min 6 chars)
+  - Password visibility toggle (eye icon)
+- **Forgot Password** functionality (redirects user to Gmail after reset).
+
+###  **Profile Management**
+- Displays user info (Name, Email, Image).
+- Functional **Update Profile** using `updateProfile()`.
+
+###  **Service Details Page**
+- Protected Route — accessible only when logged in.
+- Displays complete service info from JSON.
+- Includes **Book Service form** with success toast notifications.
+
+###  **Notifications**
+- Real-time success/error messages with **React Hot Toast**.
+
+###  **Design & Responsiveness**
+- Minimalist, modern UI with warm tones and soft shadows.
+- Subtle scroll animations powered by **AOS**.
+- Fully responsive — no crashes or reload errors on route navigation.
+
+---
+
+##  Technologies Used
+
+### **Frontend Stack**
+- React.js (Vite)
+- React Router DOM
+- Tailwind CSS / DaisyUI
+
+### **Animation & Interactivity**
+- **AOS** (Animate on Scroll)
+- **Swiper.js** (for carousel/slider)
+- **React Hot Toast** (for notifications)
+
+### **Authentication**
+- Firebase Authentication
+- Google Sign-In
+- Environment Variables for security (`.env`)
+
+### **Deployment**
+- Hosted on **Netlify** (SPA mode, route-safe reloads)
+
+---
+
+##  NPM Packages Used
+
+| Package | Purpose |
+|----------|----------|
+| **aos** | Smooth scroll-based animations for all sections |
+| **react-hot-toast** | Success/error notifications on user actions |
+| **swiper** | Beautiful, responsive hero slider on homepage |
