@@ -1,7 +1,57 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
+    const {createUser, setUser, updateUser} = use(AuthContext);
+    const handleRegister = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const photo = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        
+        if(name.length < 4 ){
+            toast.error('Name At least 4 character')
+            return;
+        }
+        
+        console.log({name, photo, email, password})
+    
+    // Check uppercase
+    if (!/(?=.*[A-Z])/.test(password)) {
+      toast.error('Must have at least one uppercase letter');
+      return
+    }
+    
+    // Check lowercase
+    if (!/(?=.*[a-z])/.test(password)) {
+      toast.error('Must have at least one lowercase letter');
+      return
+    }
+    
+    // Check length
+    if (password.length < 6) {
+      toast.error('Must be at least 6 characters long');
+      return
+    }
+    createUser(email, password)
+    .then((result)=> {
+        const user = result.user;
+        updateUser({displayName: name, photoURL: photo})
+        .then(()=>{
+            setUser({...user, displayName: name, photoURL: photo})
+            toast.success('Successfully Register')
+        .catch(()=>{
+            // console.log(error)
+            setUser(user)
+            })
+        })
+    })
+      
+}
     return (
         <div>
             <div className="min-h-screen flex items-center justify-center py-12">
@@ -9,18 +59,18 @@ const RegisterPage = () => {
                     <div className="card-body bg-base-200 border border-zinc-200">
                         <h2 className="card-title text-3xl font-bold justify-center mb-6">Sign Up</h2>
 
-                        <form className="space-y-4">
+                        <form onSubmit={handleRegister} className="space-y-4">
                             <fieldset className="fieldset">
                                 <label className="label">Name</label>
-                                <input type="text" className="input w-full" placeholder="Enter Your Name" />
+                                <input type="text" className="input w-full" name='name' placeholder="Enter Your Name" />
                                 <label className="label">Photo URL</label>
-                                <input type="text" className="input w-full" placeholder="Enter your Photo URL" />
+                                <input type="text" className="input w-full" name='photoURL' placeholder="Enter your Photo URL" />
                                 <label className="label">Email</label>
-                                <input type="email" className="input w-full" placeholder="Email" />
+                                <input type="email" className="input w-full" name='email' placeholder="Email" />
                                 <label className="label">Password</label>
-                                <input type="password" className="input w-full" placeholder="Password" />
+                                <input type="password" className="input w-full" name='password' placeholder="Password" />
                                 <div><a className="link link-hover">Forgot password?</a></div>
-                                <button className="btn btn-neutral mt-4">Login</button>
+                                <button className="btn btn-neutral mt-4">Register</button>
                             </fieldset>
                         </form>
 

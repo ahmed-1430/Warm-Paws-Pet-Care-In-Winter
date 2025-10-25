@@ -72,9 +72,9 @@ const ServiceDetails = () => {
                                     </fieldset>
                                 </form>
 
-                                <div className="mt-8 p-4 bg-blue-50 rounded-lg">
+                                <div className="mt-8 p-4 bg-blue-50 rounded-lg py-5">
                                     <h3 className="font-bold text-lg mb-2">What to Expect:</h3>
-                                    <ul className="list-disc pl-5 space-y-1">
+                                    <ul className="list-disc pl-5 space-y-2">
                                         <li>Confirmation email within 24 hours</li>
                                         <li>Service duration: 1-2 hours</li>
                                         <li>Bring your pet's vaccination records</li>

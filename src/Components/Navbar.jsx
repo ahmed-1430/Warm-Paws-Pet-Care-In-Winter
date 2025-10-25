@@ -37,7 +37,7 @@ const Navbar = () => {
                                 <li><Link to="/services" className={location.pathname === '/services' ? 'active' : ''}>Services</Link></li>
                                 <li><Link to="/user/login" className={location.pathname === '/user/login' ? 'active' : ''}>Login</Link></li>
                                 <li><Link to="/user/register" className={location.pathname === '/user/register' ? 'active' : ''}>Register</Link></li>
-                                <li><Link to="/user/profile" className={location.pathname === '/profile' ? 'active' : ''}>My Profile</Link></li>
+                                <li><Link to="/user/profile" className={location.pathname === '/user/profile' ? 'active' : ''}>My Profile</Link></li>
                             </ul>
                         </div>
                         <div className="dropdown dropdown-end z-10">
@@ -45,13 +45,13 @@ const Navbar = () => {
                                 <div className="w-10 rounded-full">
                                     <img
                                         alt="User Avatar"
-                                        src={user.photo}
+                                        src={`https://i.ibb.co.com/nNbBbftF/Dr-Emily-Rodriguez.webp`}
                                     />
                                 </div>
                             </div>
                             <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                                 <li>
-                                    <span className="text-sm font-semibold">{user.name}</span>
+                                    <span className="text-sm font-semibold">{`user name`}</span>
                                 </li>
                                 <li><Link to="/profile">My Profile</Link></li>
                                 <li><button>Logout</button></li>

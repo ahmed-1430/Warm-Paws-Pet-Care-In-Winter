@@ -1,7 +1,9 @@
 import { Link } from 'react-router';
 import {AuthContext} from '../Provider/AuthProvider'
+import { use } from 'react';
 
 const LoginPage = () => {
+    const {createUser} = use(AuthContext);
     return (
         <div>
             <div className="min-h-screen flex items-center justify-center py-12">
