@@ -1,19 +1,24 @@
 import React, { use } from 'react';
-import { Link, useLocation } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const { user, signOutUser } = use(AuthContext);
     const location = useLocation();
-    const handleLogout = () => {
-        signOutUser()
-            .then(() => {
-                toast.success('Successfully Logout')
-            }).catch(() => {
-                toast.error("Error")
-            })
-    }
+    const navigate = useNavigate();
+     const handleLogout = () => {
+    signOutUser()
+      .then(() => {
+        toast.success('Successfully logged out');
+        setTimeout(() => {
+          navigate('/');
+        }, 1500);
+      })
+      .catch(() => {
+        toast.error('Logout failed');
+      });
+  };
     return (
         <div>
             <div className="navbar bg-base-100 shadow-md sticky top-0">
@@ -26,11 +31,22 @@ const Navbar = () => {
                                 </svg>
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3  p-2 shadow bg-base-100 rounded-box w-52">
-                                <li><Link to="/" className={`${location.pathname === '' ? 'active' : ''}, active:bg-red-500`}>Home</Link></li>
+                                <li><Link to="/" className={`${location.pathname === '/' ? 'active' : ''}, active:bg-red-500`}>Home</Link></li>
                                 <li><Link to="/services" className={location.pathname == '/services' ? 'active' : ''}>Services</Link></li>
-                                <li><Link to="/user/login" className={location.pathname == '/user/login' ? 'active' : ''}>Login</Link></li>
-                                <li><Link to="/user/register" className={location.pathname == '/user/register' ? 'active' : ''}>Register</Link></li>
-                                <li><Link to="/user/profile" className={location.pathname == '/user/profile' ? 'active' : ''}>My Profile</Link></li>
+                                {
+                                    user
+                                        ?
+                                        <>
+                                            <li><Link to="/user/profile" className={location.pathname === '/user/profile' ? 'active' : ''}>My Profile</Link></li>
+                                            <li><Link to="/user/profile" onClick={handleLogout} className={``}>Logout</Link></li> {/* i added this for my own satifiction ("hahaha") */}
+
+                                        </>
+                                        :
+                                        <>
+                                            <li><Link to="/user/login" className={location.pathname === '/user/login' ? 'active' : ''}>Login</Link></li>
+                                            <li><Link to="/user/register" className={location.pathname === '/user/register' ? 'active' : ''}>Register</Link></li>
+                                        </>
+                                }
                             </ul>
                         </div>
                         <Link to="/" className="btn btn-ghost text-xl">
