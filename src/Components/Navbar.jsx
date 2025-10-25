@@ -1,9 +1,9 @@
-import React, { use } from 'react';
+// import React, { use } from 'react';
 import { Link, useLocation } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Navbar = () => {
-    const {user} = use(AuthContext);
+    // const {user} = use(AuthContext);
     const location = useLocation();
     return (
         <div>

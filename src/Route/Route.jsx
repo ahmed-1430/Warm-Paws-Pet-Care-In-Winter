@@ -10,6 +10,7 @@ import RegisterPage from "../Pages/RegisterPage";
 import Profile from "../Pages/Profile";
 import ServiceDetails from "../Pages/ServiceDetails";
 import ServiceDetailsLayout from "../Layouts/ServiceDetailsLayout";
+import EditProfile from "../Pages/EditProfile";
 
 const router = createBrowserRouter([
     {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
             {
                 path: "/user/profile",
                 element: <Profile></Profile>
+            },
+            {
+                path: "/user/profile/edit-profile",
+                element: <EditProfile></EditProfile>
             }
         ]
     },

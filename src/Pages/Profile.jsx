@@ -1,9 +1,9 @@
-import React, { use } from 'react';
+// import React, { use } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { NavLink } from 'react-router';
 
 const Profile = () => {
-    const { user } = use(AuthContext);
+    // const { user } = use(AuthContext);
     return (
         <div>
             <div className="min-h-screen  py-8 px-4">
