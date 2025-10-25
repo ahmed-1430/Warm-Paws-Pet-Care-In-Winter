@@ -26,7 +26,7 @@ const EditProfile = () => {
         updateUser({ displayName: name, photoURL })
             .then(() => {
                 setUser({ ...user, displayName: name, photoURL });
-                toast.success('Profile updated successfully ✅');
+                toast.success('Profile updated successfully');
                 setTimeout(() => {
                     navigate('/user/profile');
                 }, 1500);

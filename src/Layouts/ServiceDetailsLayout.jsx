@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
 import { Outlet } from 'react-router';
+import { ToastContainer } from 'react-toastify';
 
 const ServiceDetailsLayout = () => {
     return (
@@ -9,6 +10,7 @@ const ServiceDetailsLayout = () => {
                 <Navbar></Navbar>
             </header>
             <main>
+                <ToastContainer></ToastContainer>
                 <Outlet></Outlet>
             </main>
             

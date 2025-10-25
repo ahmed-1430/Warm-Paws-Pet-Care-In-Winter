@@ -56,7 +56,7 @@ const RegisterPage = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
-                toast.success('Successfully signed in with Google ✅');
+                toast.success('Successfully signed in with Google');
                 navigate('/'); 
             })
             .catch((error) => {
@@ -93,7 +93,7 @@ const RegisterPage = () => {
                                     className="absolute right-3 top-3 cursor-pointer text-gray-500"
                                     onClick={() => setShowPassword(!showPassword)}
                                 >
-                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                    {showPassword ? <FaEyeSlash size={22} /> : <FaEye size={22}/>}
                                 </span>
                             </div>
 
