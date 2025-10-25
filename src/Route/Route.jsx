@@ -12,6 +12,7 @@ import ServiceDetails from "../Pages/ServiceDetails";
 import ServiceDetailsLayout from "../Layouts/ServiceDetailsLayout";
 import EditProfile from "../Pages/EditProfile";
 import PrivateRoute from "../Provider/PrivateRoute";
+import ResetPassword from "../Pages/ResetPassword";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path: "/user/register",
                 element: <RegisterPage></RegisterPage>
+            },
+            {
+                path: "/user/reset-password",
+                element: <ResetPassword></ResetPassword>
             },
             {
                 path: "/user/profile",
