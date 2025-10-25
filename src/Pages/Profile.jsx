@@ -45,11 +45,11 @@ const Profile = () => {
 
                                 <div className="gap-6 p-5">
                                     <label className="block text-sm font-medium text-gray-700 mb-2"> Full Name </label>
-                                    <h3 className='p-3 border-2 border-zinc-300 rounded-xl font-semibold'>User Name here</h3>
+                                    <h3 className='p-3 border-2 border-zinc-300 rounded-xl font-semibold'>{user.displayName ? user.displayName : "Null"}</h3>
                                     <label className="block text-sm font-medium text-gray-700 mb-2"> Email Address </label>
-                                    <h3 className='p-3 border-2 border-zinc-300 rounded-xl '>Email Address Here</h3>
+                                    <h3 className='p-3 border-2 border-zinc-300 rounded-xl '>{user.email ? user.email : "Null"}</h3>
                                     <label className="block text-sm font-medium text-gray-700 mb-2"> Profile Photo URL </label>
-                                    <h3 className='p-3 border-2 border-zinc-300 rounded-xl'>Photo URL here</h3>
+                                    <h3 className='p-3 border-2 border-zinc-300 rounded-xl'>{user.photoURL ? user.photoURL : "Null"}</h3>
                                 </div>                               
                             </div>
                         </div>
