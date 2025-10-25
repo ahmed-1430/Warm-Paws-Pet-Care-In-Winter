@@ -1,9 +1,36 @@
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import {AuthContext} from '../Provider/AuthProvider'
+import { toast } from 'react-toastify';
 import { use } from 'react';
 
 const LoginPage = () => {
-    const {createUser} = use(AuthContext);
+    const {  loginUser} = use(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        
+        
+        // console.log({email, password});
+        
+        loginUser(email, password)
+        .then(() => {
+            // Fixed navigation - use from state or default to home
+            const from = location.state?.from?.pathname || '/';
+            navigate(from, { replace: true });
+            toast.success('Successfully Login');
+        })
+        .catch((error) => {
+            const  errorCode= error.code 
+            // const errorMessage = error.message
+            console.log(errorCode)
+            toast.error(errorCode);
+            ;
+        });
+    };
     return (
         <div>
             <div className="min-h-screen flex items-center justify-center py-12">
@@ -11,14 +38,14 @@ const LoginPage = () => {
                     <div className="card-body">
                         <h2 className="card-title text-3xl font-bold justify-center mb-6">Login</h2>
 
-                        <form className="space-y-4 w-full">
+                        <form onSubmit={handleLogin} className="space-y-4 w-full">
                             <fieldset className="fieldset w-full">
                                 <label className="label">Email</label>
-                                <input type="email" className="input w-full" placeholder="Email" />
+                                <input type="email" className="input w-full" name='email' placeholder="Email" />
                                 <label className="label">Password</label>
-                                <input type="password" className="input w-full" placeholder="Password" />
+                                <input type="password" className="input w-full" name='password' placeholder="Password" />
                                 <div><a className="link link-hover">Forgot password?</a></div>
-                                <button className="btn btn-neutral mt-4">Login</button>
+                                <button type='submit' className="btn btn-neutral mt-4">Login</button>
                             </fieldset>
                         </form>
                         <div className="divider">OR</div>

@@ -1,10 +1,19 @@
-// import React, { use } from 'react';
+import React, { use } from 'react';
 import { Link, useLocation } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
-    // const {user} = use(AuthContext);
+    const { user, signOutUser } = use(AuthContext);
     const location = useLocation();
+    const handleLogout = () => {
+        signOutUser()
+            .then(() => {
+                toast.success('Successfully Logout')
+            }).catch(() => {
+                toast.error("Error")
+            })
+    }
     return (
         <div>
             <div className="navbar bg-base-100 shadow-md sticky top-0">
@@ -35,28 +44,40 @@ const Navbar = () => {
                             <ul className="menu menu-horizontal px-1">
                                 <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
                                 <li><Link to="/services" className={location.pathname === '/services' ? 'active' : ''}>Services</Link></li>
-                                <li><Link to="/user/login" className={location.pathname === '/user/login' ? 'active' : ''}>Login</Link></li>
-                                <li><Link to="/user/register" className={location.pathname === '/user/register' ? 'active' : ''}>Register</Link></li>
-                                <li><Link to="/user/profile" className={location.pathname === '/user/profile' ? 'active' : ''}>My Profile</Link></li>
+                                {
+                                    user
+                                        ?
+                                        <>
+                                            <li><Link to="/user/profile" className={location.pathname === '/user/profile' ? 'active' : ''}>My Profile</Link></li>
+
+                                        </>
+                                        :
+                                        <>
+                                            <li><Link to="/user/login" className={location.pathname === '/user/login' ? 'active' : ''}>Login</Link></li>
+                                            <li><Link to="/user/register" className={location.pathname === '/user/register' ? 'active' : ''}>Register</Link></li>
+                                        </>
+                                }
                             </ul>
                         </div>
-                        <div className="dropdown dropdown-end z-10">
-                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 rounded-full">
-                                    <img
-                                        alt="User Avatar"
-                                        src={`https://i.ibb.co.com/nNbBbftF/Dr-Emily-Rodriguez.webp`}
-                                    />
+                        {
+                            user && <div className="dropdown dropdown-end z-10">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img
+                                            alt="User Avatar"
+                                            src={`${user && user.photoURL ? user.photoURL : "https://i.ibb.co.com/nNbBbftF/Dr-Emily-Rodriguez.webp"}`}
+                                        />
+                                    </div>
                                 </div>
+                                <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                    <li>
+                                        <span className="text-sm font-semibold">{user && user.displayName}</span>
+                                    </li>
+                                    <li><Link to="/user/profile">My Profile</Link></li>
+                                    <li><button onClick={handleLogout}>Logout</button></li>
+                                </ul>
                             </div>
-                            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                <li>
-                                    <span className="text-sm font-semibold">{`user name`}</span>
-                                </li>
-                                <li><Link to="/profile">My Profile</Link></li>
-                                <li><button>Logout</button></li>
-                            </ul>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>

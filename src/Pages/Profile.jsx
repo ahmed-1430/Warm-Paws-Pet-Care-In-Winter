@@ -1,9 +1,9 @@
-// import React, { use } from 'react';
+import React, { use } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { NavLink } from 'react-router';
 
 const Profile = () => {
-    // const { user } = use(AuthContext);
+    const { user } = use(AuthContext);
     return (
         <div>
             <div className="min-h-screen  py-8 px-4">
@@ -19,13 +19,13 @@ const Profile = () => {
                                 <div className="text-center">
                                     <div className="relative inline-block mb-4">
                                         <div className="w-50 h-50 rounded-full bg-linear-to-r from-blue-500 to-purple-500 p-1">
-                                            <img src={`https://i.ibb.co.com/nNbBbftF/Dr-Emily-Rodriguez.webp`} alt="Profile" className="w-full h-full rounded-full object-cover border-4 border-white" />
+                                            <img src={`${user.photoURL ? user.photoURL :"https://i.ibb.co.com/nNbBbftF/Dr-Emily-Rodriguez.webp"}`} alt="Profile" className="w-full h-full rounded-full object-cover border-4 border-white" />
                                         </div>
                                         <div className="absolute bottom-7 right-3 w-6 h-6 bg-green-500 rounded-full border-2 border-white"></div>
                                     </div>
 
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-2">{`users Name here`}</h2>
-                                    <p className="text-gray-600 mb-1">{`user gmail`}</p>
+                                    <h2 className="text-2xl font-bold text-gray-900 mb-2">{`${user.displayName ? user.displayName : "Null"}`}</h2>
+                                    <p className="text-gray-600 mb-1">{`${user.email ? user.email : "Null"}`}</p> {/* added this function to avoid error idk is it works properly*/}
 
                                 </div>
                             </div>
