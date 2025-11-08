@@ -1,11 +1,11 @@
 #  WarmPaws – Pet Care in Winter
 
-### **Assignment Category:** Assignment-09_category_rose  
-**Theme:** A cozy winter companion platform designed for pet owners to ensure their furry friends stay warm, safe, and healthy during the cold season.
+### **Theme:** 
+A cozy winter companion platform designed for pet owners to ensure their furry friends stay warm, safe, and healthy during the cold season.
 
 ---
 
-##  Live Demo
+##  Live Link
  [Live Site URL](https://b-12a-09-warm-paws-pet-care.web.app/)  
  [GitHub Repository](https://github.com/programming-hero-web-course2/b12-a9-firesheild-ahmed-1430)
 
@@ -71,7 +71,7 @@ It brings together everything in one cozy interface — from **local pet care se
 - Environment Variables for security (`.env`)
 
 ### **Deployment**
-- Hosted on **Netlify** (SPA mode, route-safe reloads)
+- Hosted on **FireBase** (SPA mode, route-safe reloads)
 
 ---
 

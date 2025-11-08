@@ -59,7 +59,7 @@ const CarouselSlider = () => {
                 <img 
                   src={slide.image} 
                   alt={slide.title}
-                  className="w-full h-full object-cover z-0"
+                  className="w-full h-full  md:object-fit z-0"
                   onError={(e) => handleImageError(e, slide.fallback)}
                 />                
                 <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-6 z-10">
