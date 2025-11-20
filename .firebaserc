@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "b-12a-09-warm-paws-pet-care"
-  }
+    "default": "b-12a-09-warm-paws-pet-care",
+    "firebase deploy": "warmpaws--pet-care-in-winter"
+  },
+  "targets": {},
+  "etags": {}
 }
