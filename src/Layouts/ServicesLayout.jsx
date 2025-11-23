@@ -8,7 +8,7 @@ import LoadingPage from '../Pages/Loading';
 const ServicesLayout = () => {
     const { state } = useNavigate()
     return (
-        <div className='flex flex-col h-fit bg-linear-to-br from-slate-50 to-blue-50'>
+        <div className='flex flex-col h-fit bg-linear-to-br from-slate-50 to-blue-50 pt-15'>
             <header>
                 <Navbar></Navbar>
             </header>

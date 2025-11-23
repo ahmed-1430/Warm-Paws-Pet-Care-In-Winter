@@ -11,7 +11,7 @@ const Home = () => {
     const data = useLoaderData();
     // console.log(data)
     return (
-    <div className='w-11/12 mx-auto'>
+    <div className='w-11/12 mx-auto pt-15'>
         <CarouselSlider></CarouselSlider>
         <PopularServices data={data}></PopularServices>  
         <CareTips></CareTips>

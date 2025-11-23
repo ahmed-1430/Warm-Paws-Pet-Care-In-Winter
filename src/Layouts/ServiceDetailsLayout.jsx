@@ -7,7 +7,7 @@ import LoadingPage from '../Pages/Loading';
 const ServiceDetailsLayout = () => {
     const { state } = useNavigate()
     return (
-        <div>
+        <div className='pt-15'>
             <header>
                 <Navbar></Navbar>
             </header>
