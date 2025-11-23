@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-router';
 
 const PetProducts = () => {
   useEffect(() => {
@@ -28,7 +29,7 @@ const PetProducts = () => {
               <li>Pet-safe ice melt and de-icers</li>
               <li>Moisturizing paw balms</li>
             </ul>
-            <button className="btn btn-primary" data-aos="zoom-in" data-aos-delay="300"> Shop Now </button>
+            <Link to={"/services"} className="btn btn-primary" data-aos="zoom-in" data-aos-delay="300"> Shop Now </Link>
           </div>
           <div data-aos="zoom-in-left" data-aos-delay="250"className="flex justify-center">
             <img src="https://i.ibb.co.com/NdhKxXLs/winter-pet-products.jpg" alt="Winter Pet Products" className="rounded-lg shadow-lg w-full md:w-4/5 hover:scale-105 transition-transform duration-300"/>
