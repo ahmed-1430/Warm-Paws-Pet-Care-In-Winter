@@ -14,6 +14,8 @@ import EditProfile from "../Pages/EditProfile";
 import PrivateRoute from "../Provider/PrivateRoute";
 import ResetPassword from "../Pages/ResetPassword";
 import Booking from "../Pages/Booking";
+import AdminLayout from "../Layouts/AdminLayout";
+import AdminServices from "../Pages/Admin/AdminServices";
 
 const router = createBrowserRouter([
     {
@@ -89,6 +91,16 @@ const router = createBrowserRouter([
                 <Booking />
             </PrivateRoute>
         )
+    },
+    {
+        path: "/admin",
+        element: <AdminLayout></AdminLayout>,
+        children: [
+            {
+                path: "/admin/services",
+                element: <AdminServices/>
+            }
+        ]
     },
     {
         path: "/*",

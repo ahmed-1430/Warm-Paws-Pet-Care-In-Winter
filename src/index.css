@@ -6,3 +6,11 @@ a.active{
     bg-slate-800
     text-white
 }
+
+.admin-link {
+  @apply flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-gray-700 hover:bg-gray-200 transition;
+}
+
+.admin-link.active {
+  @apply bg-blue-600 text-white shadow;
+}
