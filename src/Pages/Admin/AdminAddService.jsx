@@ -6,12 +6,14 @@ const AdminAddService = () => {
     const [loading, setLoading] = useState(false);
     const [service, setService] = useState({
         serviceName: "",
-        serviceCategory: "",
+        providerName: "",
+        providerEmail: "",
         price: "",
-        image: "",
+        rating: "",
+        slotsAvailable: "",
         description: "",
-        estimatedTime: "",
-        location: "",
+        image: "",
+        category: "",
     });
 
     const handleChange = (e) => {
@@ -25,16 +27,22 @@ const AdminAddService = () => {
         try {
             await axios.post("http://localhost:3000/api/services", service);
             toast.success("Service added successfully!");
+
+            // Reset fields
             setService({
                 serviceName: "",
-                serviceCategory: "",
+                providerName: "",
+                providerEmail: "",
                 price: "",
-                image: "",
+                rating: "",
+                slotsAvailable: "",
                 description: "",
-                estimatedTime: "",
+                image: "",
+                category: "",
             });
+
         } catch (err) {
-            toast.error(`Failed to add service ${err}`);
+            toast.error(`Failed to add service: ${err}`);
         } finally {
             setLoading(false);
         }
@@ -63,13 +71,13 @@ const AdminAddService = () => {
                 <div className="form-control">
                     <label className="label">Category</label>
                     <select
-                        name="serviceCategory"
-                        value={service.serviceCategory}
+                        name="category"
+                        value={service.category}
                         onChange={handleChange}
                         className="select select-bordered w-full"
                         required
                     >
-                        <option disabled value="">Select Category</option>
+                        <option value="">Select Category</option>
                         <option>Clothing</option>
                         <option>Health</option>
                         <option>Exercise</option>
@@ -80,9 +88,35 @@ const AdminAddService = () => {
                     </select>
                 </div>
 
+                {/* Provider Name */}
+                <div className="form-control">
+                    <label className="label">Provider Name</label>
+                    <input
+                        type="text"
+                        name="providerName"
+                        value={service.providerName}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        required
+                    />
+                </div>
+
+                {/* Provider Email */}
+                <div className="form-control">
+                    <label className="label">Provider Email</label>
+                    <input
+                        type="email"
+                        name="providerEmail"
+                        value={service.providerEmail}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        required
+                    />
+                </div>
+
                 {/* Price */}
                 <div className="form-control">
-                    <label className="label">Price</label>
+                    <label className="label">Price ($)</label>
                     <input
                         type="number"
                         name="price"
@@ -91,18 +125,17 @@ const AdminAddService = () => {
                         className="input input-bordered w-full"
                         required
                     />
-                </div>
-
-                {/* Estimated Time */}
+                </div>               
+                {/* Slots Available */}
                 <div className="form-control">
-                    <label className="label">Estimated Time</label>
+                    <label className="label">Slots Available</label>
                     <input
-                        type="text"
-                        name="estimatedTime"
-                        value={service.estimatedTime}
+                        type="number"
+                        name="slotsAvailable"
+                        value={service.slotsAvailable}
                         onChange={handleChange}
                         className="input input-bordered w-full"
-                        placeholder="e.g., 2 hours"
+                        required
                     />
                 </div>
 
@@ -128,9 +161,11 @@ const AdminAddService = () => {
                         onChange={handleChange}
                         className="textarea textarea-bordered w-full"
                         rows="4"
+                        required
                     ></textarea>
-                </div>             
-                {/* Submit Button */}
+                </div>
+
+                {/* Submit */}
                 <button
                     type="submit"
                     className="btn btn-primary md:col-span-2"
@@ -138,6 +173,7 @@ const AdminAddService = () => {
                 >
                     {loading ? "Adding..." : "Add Service"}
                 </button>
+
             </form>
         </div>
     );
