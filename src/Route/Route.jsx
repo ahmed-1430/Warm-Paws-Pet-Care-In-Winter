@@ -13,6 +13,7 @@ import ServiceDetailsLayout from "../Layouts/ServiceDetailsLayout";
 import EditProfile from "../Pages/EditProfile";
 import PrivateRoute from "../Provider/PrivateRoute";
 import ResetPassword from "../Pages/ResetPassword";
+import Booking from "../Pages/Booking";
 
 const router = createBrowserRouter([
     {
@@ -74,12 +75,20 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <PrivateRoute> <ServiceDetails></ServiceDetails> </PrivateRoute> ,
+                element: <PrivateRoute> <ServiceDetails></ServiceDetails> </PrivateRoute>,
                 loader: ({ params }) =>
                     fetch(`http://localhost:3000/api/services/${params.id}`),
                 hydrateFallbackElement: <Loading></Loading>,
             }
         ]
+    },
+    {
+        path: "/booking/:serviceId",
+        element: (
+            <PrivateRoute>
+                <Booking />
+            </PrivateRoute>
+        )
     },
     {
         path: "/*",

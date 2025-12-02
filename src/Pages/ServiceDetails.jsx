@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { toast } from "react-toastify";
@@ -67,7 +68,7 @@ const ServiceDetails = () => {
       fetchData(); // refresh review list
 
     } catch (err) {
-      toast.error("Failed to add review");
+      toast.error(`Failed to add review ${err}`);
     }
   };
 

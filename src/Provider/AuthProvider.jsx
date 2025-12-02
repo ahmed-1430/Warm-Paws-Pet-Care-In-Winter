@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../FireBase/FireBase.init';
 import {
