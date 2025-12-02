@@ -40,7 +40,7 @@ const PopularServices = ({ data }) => {
                 </div>
                 <p className="text-xl font-bold text-primary">${service.price}</p>
                 <div className="card-actions justify-end">
-                  <Link to={`/services/category/${service.serviceId}`} className="btn btn-primary btn-sm" data-aos="fade-up"> View Details </Link>
+                  <Link to={`/services/category/${service._id}`} className="btn btn-primary btn-sm" data-aos="fade-up"> View Details </Link>
                 </div>
               </div>
             </div>

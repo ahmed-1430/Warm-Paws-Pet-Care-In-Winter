@@ -1,46 +1,64 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../FireBase/FireBase.init';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import {
+    createUserWithEmailAndPassword,
+    GoogleAuthProvider,
+    onAuthStateChanged,
+    sendPasswordResetEmail,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    signOut,
+    updateProfile
+} from 'firebase/auth';
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [userLoading, setUserLoading] = useState(true)
+    const [userLoading, setUserLoading] = useState(true);
 
     const createUser = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
+
     const updateUser = (updatedData) => {
-        return updateProfile(auth.currentUser, updatedData)
-    }
+        return updateProfile(auth.currentUser, updatedData);
+    };
+
     const signUpWithGoogle = () => {
         setUserLoading(true);
         const provider = new GoogleAuthProvider();
         return signInWithPopup(auth, provider);
     };
-    const loginUser = (email, password)=> {
-        setUserLoading(true)
-        return signInWithEmailAndPassword(auth, email, password)
-    }
-     const signOutUser = () => {
-        return signOut(auth)
-    }
+
+    const loginUser = (email, password) => {
+        setUserLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    };
+
+    const signOutUser = () => {
+        localStorage.removeItem("user");
+        return signOut(auth);
+    };
+
     const resetPassword = (email) => {
-  return sendPasswordResetEmail(auth, email);
-};
+        return sendPasswordResetEmail(auth, email);
+    };
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            setUserLoading(false)
+            setUserLoading(false);
+
+            if (currentUser) {
+                localStorage.setItem("user", JSON.stringify(currentUser));
+            } else {
+                localStorage.removeItem("user");
+            }
         });
-        return () => {
-            unSubscribe();
-        }
+
+        return () => unSubscribe();
     }, []);
-
-
 
     const authData = {
         user,
@@ -52,9 +70,13 @@ const AuthProvider = ({ children }) => {
         signOutUser,
         userLoading,
         resetPassword,
-    }
+    };
 
-    return <AuthContext value={authData}>{children}</AuthContext>
+    return (
+        <AuthContext.Provider value={authData}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
 export default AuthProvider;

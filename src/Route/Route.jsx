@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path: "",
                 element: <Home></Home>,
-                loader: () => fetch('/Services.json'),
+                loader: () => fetch('http://localhost:3000/api/services'),
                 hydrateFallbackElement: <Loading></Loading>
 
             }
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
             {
                 path: "",
                 element: <Services></Services>,
-                loader: () => fetch('/Services.json'),
+                loader: () => fetch('http://localhost:3000/api/services'),
                 hydrateFallbackElement: <Loading></Loading>
 
             }
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/user/profile",
-                element: <PrivateRoute> <Profile></Profile> </PrivateRoute>, /* i think and should have to private profile and edit profile page.....  */
+                element: <PrivateRoute> <Profile></Profile> </PrivateRoute>,
             },
             {
                 path: "/user/profile/edit-profile",
@@ -70,16 +70,16 @@ const router = createBrowserRouter([
     },
     {
         path: "services/category/:id",
-        element: <PrivateRoute> <ServiceDetailsLayout></ServiceDetailsLayout> </PrivateRoute>,
+        element: <ServiceDetailsLayout></ServiceDetailsLayout>,
         children: [
             {
                 path: "",
-                element: <ServiceDetails></ServiceDetails>,
-                loader: () => fetch('/Services.json'),
+                element: <PrivateRoute> <ServiceDetails></ServiceDetails> </PrivateRoute> ,
+                loader: ({ params }) =>
+                    fetch(`http://localhost:3000/api/services/${params.id}`),
                 hydrateFallbackElement: <Loading></Loading>,
             }
         ]
-
     },
     {
         path: "/*",

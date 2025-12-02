@@ -1,117 +1,159 @@
-import React from 'react';
-import { Navigate, useLoaderData, useParams } from 'react-router';
-import { toast } from 'react-toastify';
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const ServiceDetails = () => {
-    const { id } = useParams();
-    const data = useLoaderData();
-    const service = data.find((ser) => ser.serviceId == id);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-    if (!service) {
-        return <Navigate to="/services" />;
+  const [service, setService] = useState(null);
+  const [reviews, setReviews] = useState([]);
+  const [reviewText, setReviewText] = useState("");
+  const [user, setUser] = useState(null);
+
+  // Load logged-in user
+  useEffect(() => {
+    const stored = localStorage.getItem("user");
+    if (stored) setUser(JSON.parse(stored));
+  }, []);
+
+  // Fetch service + reviews
+  const fetchData = async () => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/services/${id}`);
+      const data = await res.json();
+      setService(data);
+
+      const revRes = await fetch(`http://localhost:3000/api/reviews/service/${id}`);
+      const revData = await revRes.json();
+      setReviews(revData.reverse()); // newest first
+    } catch (err) {
+      console.log(err);
     }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        toast.success('Service booked successfully');
-        e.target.reset();
-    };
-    return (
-        <div className="w-11/12 mx-auto my-12">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Service Info Card */}
-                <div className="lg:col-span-2">
-                    <div className="card shadow-xl bg-white rounded-2xl overflow-hidden">
-                        <figure className="h-96 overflow-hidden">
-                            <img
-                                src={service.image}
-                                alt={service.serviceName}
-                                className="w-full h-full object-fit transition-transform duration-300 hover:scale-105"
-                            />
-                        </figure>
-                        <div className="card-body p-6">
-                            <h1 className="text-4xl font-bold mb-3">{service.serviceName}</h1>
+  };
 
-                            {/* Rating */}
-                            <div className="flex items-center mb-4">
-                                <div className="rating rating-md">
-                                    {[...Array(5)].map((_, i) => (
-                                        <input
-                                            key={i}
-                                            type="radio"
-                                            name={`rating-${service.serviceId}`}
-                                            className="mask mask-star-2 bg-orange-400"
-                                            checked={i < Math.floor(service.rating)}
-                                            readOnly
-                                        />
-                                    ))}
-                                </div>
-                                <span className="ml-3 text-lg text-gray-600">({service.rating})</span>
-                            </div>
+  useEffect(() => {
+    fetchData();
+  }, [id]);
 
-                            <p className="text-3xl font-semibold text-primary mb-4">${service.price}</p>
-                            <p className="text-lg text-gray-700 mb-6">{service.description}</p>
+  // Submit review
+  const handleAddReview = async (e) => {
+    e.preventDefault();
 
-                            {/* Provider Info */}
-                            <div className="grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded-lg">
-                                <div>
-                                    <p className="font-medium text-gray-600">Provider</p>
-                                    <p className="text-gray-800">{service.providerName}</p>
-                                </div>
-                                <div>
-                                    <p className="font-medium text-gray-600">Email</p>
-                                    <p className="text-gray-800">{service.providerEmail}</p>
-                                </div>
-                                <div>
-                                    <p className="font-medium text-gray-600">Category</p>
-                                    <p className="text-gray-800">{service.category}</p>
-                                </div>
-                                <div>
-                                    <p className="font-medium text-gray-600">Available Slots</p>
-                                    <p className="text-gray-800">{service.slotsAvailable}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    if (!user) {
+      toast.error("Please login to post a review");
+      navigate("/user/login");
+      return;
+    }
 
-                {/* Booking Form */}
-                <div>
-                    <div className="card shadow-xl bg-white rounded-2xl p-6 sticky top-6">
-                        <h2 className="text-2xl font-bold mb-6">Book This Service</h2>
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            <label className="label">Name</label>
-                            <input
-                                type="text"
-                                placeholder="Enter Your Name"
-                                className="input w-full"
-                                required
-                            />
-                            <label className="label">Email</label>
-                            <input
-                                type="email"
-                                placeholder="Enter Your Email"
-                                className="input w-full"
-                                required
-                            />
-                            <button type="submit" className="btn btn-primary w-full mt-2">
-                                Book Now
-                            </button>
-                        </form>
+    if (!reviewText.trim()) return;
 
-                        <div className="mt-8 bg-blue-50 p-5 rounded-lg">
-                            <h3 className="font-semibold text-lg mb-2">What to Expect:</h3>
-                            <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                                <li>Confirmation email within 24 hours</li>
-                                <li>Service duration: 1-2 hours</li>
-                                <li>Bring your pet's vaccination records</li>
-                                <li>Cancel up to 24 hours before for full refund</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    try {
+      await fetch("http://localhost:3000/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          serviceId: id,
+          userId: user.uid,
+          userName: user.displayName,
+          message: reviewText,
+          createdAt: new Date(),
+        }),
+      });
+
+      toast.success("Review added successfully");
+
+      setReviewText("");
+      fetchData(); // refresh review list
+
+    } catch (err) {
+      toast.error("Failed to add review");
+    }
+  };
+
+  // Booking
+  const handleBooking = () => {
+    if (!user) {
+      toast.error("Please login to book this service");
+      navigate("/user/login");
+      return;
+    }
+    navigate(`/booking/${id}`);
+  };
+
+  if (!service) return <div className="text-center py-10">Loading...</div>;
+
+  return (
+    <div className="w-11/12 mx-auto my-10">
+      {/* Service Info */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        
+        <div className="lg:col-span-2">
+          <img
+            src={service.image}
+            alt={service.serviceName}
+            className="rounded-xl shadow-lg w-full h-96 object-fit"
+          />
+
+          <h1 className="text-4xl font-bold mt-5">{service.serviceName}</h1>
+          <p className="text-gray-700 text-lg mt-2">{service.description}</p>
+
+          <p className="text-3xl font-semibold text-primary mt-4">
+            ${service.price}
+          </p>
+
+          <button
+            onClick={handleBooking}
+            className="btn btn-primary mt-4 px-6 py-2 text-lg"
+          >
+            Book Now
+          </button>
         </div>
-    );
+
+        {/* Reviews */}
+        <div>
+          <h2 className="text-2xl font-bold mb-4">⭐ Customer Reviews</h2>
+
+          <div className="space-y-4 max-h-[420px] overflow-y-auto pr-2">
+            {reviews.length === 0 ? (
+              <p className="text-gray-500">No reviews yet.</p>
+            ) : (
+              reviews.map((rev) => (
+                <div key={rev._id} className="p-4 rounded-lg bg-gray-100 shadow">
+                  <p className="font-semibold">{rev.userName}</p>
+                  <p className="text-gray-700">{rev.message}</p>
+                </div>
+              ))
+            )}
+          </div>
+
+          {/* Add Review */}
+          {user ? (
+            <form onSubmit={handleAddReview} className="mt-6">
+              <textarea
+                className="w-full border p-3 rounded-lg"
+                rows="3"
+                placeholder="Write your review..."
+                value={reviewText}
+                onChange={(e) => setReviewText(e.target.value)}
+              ></textarea>
+
+              <button
+                type="submit"
+                className="btn btn-success w-full mt-3"
+              >
+                Submit Review
+              </button>
+            </form>
+          ) : (
+            <p className="text-gray-600 mt-4 text-sm">
+              Please login to post a review.
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ServiceDetails;
