@@ -16,6 +16,10 @@ import ResetPassword from "../Pages/ResetPassword";
 import Booking from "../Pages/Booking";
 import AdminLayout from "../Layouts/AdminLayout";
 import AdminServices from "../Pages/Admin/AdminServices";
+import AdminBookings from "../Pages/Admin/AdminBookings";
+import AdminReviews from "../Pages/Admin/AdminReviews";
+import AdminAddService from "../Pages/Admin/AdminAddService";
+import AdminDashboard from "../Pages/Admin/AdminDashboard";
 
 const router = createBrowserRouter([
     {
@@ -97,8 +101,24 @@ const router = createBrowserRouter([
         element: <AdminLayout></AdminLayout>,
         children: [
             {
+                path: "",
+                element: <AdminDashboard/>
+            },
+            {
                 path: "/admin/services",
                 element: <AdminServices/>
+            },
+            {
+                path: "/admin/bookings",
+                element: <AdminBookings/>
+            },
+            {
+                path: "/admin/reviews",
+                element: <AdminReviews/>
+            },
+            {
+                path: "/admin/add-service",
+                element: <AdminAddService/>
             }
         ]
     },
