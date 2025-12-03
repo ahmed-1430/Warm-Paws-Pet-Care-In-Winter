@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = "http://localhost:3000";
+const API = "http://localhost:3000/api";
 
 const AdminDashboard = () => {
     const [stats, setStats] = useState({
@@ -17,30 +17,15 @@ const AdminDashboard = () => {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const [
-                    users,
-                    bookings,
-                    reviews,
-                    services,
-                    recent,
-                ] = await Promise.all([
-                    axios.get(`${API}/users/count`),
-                    axios.get(`${API}/bookings/count`),
-                    axios.get(`${API}/reviews/count`),
-                    axios.get(`${API}/services/count`),
-                    axios.get(`${API}/bookings/recent?limit=5`),
+                const [countsRes, recentRes] = await Promise.all([
+                    axios.get(`${API}/admin/counts`),
+                    axios.get(`${API}/admin/bookings/recent?limit=5`)
                 ]);
 
-                setStats({
-                    users: users.data.count,
-                    bookings: bookings.data.count,
-                    reviews: reviews.data.count,
-                    services: services.data.count,
-                });
-
-                setRecentBookings(recent.data);
+                setStats(countsRes.data);
+                setRecentBookings(Array.isArray(recentRes.data) ? recentRes.data : []);
             } catch (err) {
-                console.log(err);
+                console.error("Dashboard Load Error:", err);
             } finally {
                 setLoading(false);
             }
@@ -74,10 +59,8 @@ const AdminDashboard = () => {
                 </p>
             </div>
 
-            {/* Stats Grid */}
+            {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-                {/* CARD TEMPLATE */}
                 {[
                     { label: "Total Users", value: stats.users, color: "from-blue-500 to-blue-600" },
                     { label: "Total Bookings", value: stats.bookings, color: "from-purple-500 to-purple-600" },
@@ -90,9 +73,7 @@ const AdminDashboard = () => {
                                    hover:shadow-2xl border border-white/40 transition transform hover:-translate-y-1"
                     >
                         <h3 className="text-gray-500 text-sm font-medium">{item.label}</h3>
-                        <p
-                            className={`text-4xl font-extrabold mt-2 bg-linear-to-r ${item.color} text-transparent bg-clip-text`}
-                        >
+                        <p className={`text-4xl font-extrabold mt-2 bg-linear-to-r ${item.color} text-transparent bg-clip-text`}>
                             {item.value}
                         </p>
                     </div>
@@ -121,16 +102,12 @@ const AdminDashboard = () => {
 
                             <tbody>
                                 {recentBookings.map((b) => (
-                                    <tr
-                                        key={b._id}
-                                        className="border-b hover:bg-gray-100/50 transition"
-                                    >
-                                        <td className="p-3">{b.user?.email}</td>
-                                        <td className="p-3">{b.service?.serviceName}</td>
+                                    <tr key={b._id} className="border-b hover:bg-gray-100/50 transition">
+                                        <td className="p-3">{b?.email || "Unknown"}</td>
+                                        <td className="p-3">{b.service?.serviceName || "N/A"}</td>
                                         <td className="p-3 text-gray-600">
-                                            {new Date(b.createdAt).toLocaleDateString()}
+                                            {new Date(b.date).toLocaleDateString()}
                                         </td>
-
                                         <td className="p-3">
                                             <span
                                                 className={`
