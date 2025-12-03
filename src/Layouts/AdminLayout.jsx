@@ -1,7 +1,8 @@
 import { FaPlus, FaStar, FaUser } from "react-icons/fa";
 import { GoPackage } from "react-icons/go";
+import { MdDashboard } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
-import { NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet } from "react-router";
 
 const AdminLayout = () => {
     return (
@@ -9,9 +10,12 @@ const AdminLayout = () => {
 
             {/* SIDEBAR */}
             <aside className="w-72 bg-white backdrop-blur-xl shadow-xl p-6">
-                <h2 className="text-2xl font-bold mb-8">Admin Panel</h2>
+                <Link to={"/admin/dashboard"} className="text-2xl font-bold mb-8">Admin Panel</Link>
 
-                <nav className="space-y-2">
+                <nav className="space-y-2 pt-8">
+                    <NavLink to="/admin/dashboard" className="admin-link">
+                        <MdDashboard  size={18} /> Dashboard
+                    </NavLink>
                     <NavLink to="/admin/services" className="admin-link">
                         <GoPackage  size={18} /> Manage Services
                     </NavLink>

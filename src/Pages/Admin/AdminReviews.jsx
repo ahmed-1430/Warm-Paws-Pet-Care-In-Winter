@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import LoadingPage from "../Loading";
 
 const API = "http://localhost:3000/api";
 
@@ -61,7 +62,7 @@ const AdminReviews = () => {
         }
     };
 
-    if (loading) return <div className="p-6">Loading reviews…</div>;
+    if (loading) return <div className="p-6"> <LoadingPage/> </div>;
 
     return (
         <div>

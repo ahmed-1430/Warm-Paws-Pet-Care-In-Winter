@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Loader from "../../Components/Loader";
+import LoadingPage from "../Loading";
 
 const API = "http://localhost:3000/api";
 
@@ -72,7 +73,7 @@ const AdminServices = () => {
 
             {/* Loading */}
             {loading && (
-                <div className="p-6 text-center text-gray-500"> <Loader/> </div>
+                <div className="p-6 text-center text-gray-500"> <LoadingPage/> </div>
             )}
 
             {/* Error */}

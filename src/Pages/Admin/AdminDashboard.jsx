@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const API = "http://localhost:3000/api";
 
@@ -25,7 +26,7 @@ const AdminDashboard = () => {
                 setStats(countsRes.data);
                 setRecentBookings(Array.isArray(recentRes.data) ? recentRes.data : []);
             } catch (err) {
-                console.error("Dashboard Load Error:", err);
+                toast.error("Dashboard Load Error:", err);
             } finally {
                 setLoading(false);
             }
@@ -110,8 +111,7 @@ const AdminDashboard = () => {
                                         </td>
                                         <td className="p-3">
                                             <span
-                                                className={`
-                                                    px-3 py-1.5 rounded-full text-xs font-semibold shadow-sm
+                                                className={`px-3 py-1.5 rounded-full text-xs font-semibold shadow-sm
                                                     ${b.status === "approved"
                                                         ? "bg-green-200/70 text-green-700"
                                                         : b.status === "pending"

@@ -101,7 +101,7 @@ const router = createBrowserRouter([
         element: <AdminLayout></AdminLayout>,
         children: [
             {
-                path: "",
+                path: "/admin/dashboard",
                 element: <AdminDashboard/>
             },
             {
@@ -119,12 +119,20 @@ const router = createBrowserRouter([
             {
                 path: "/admin/add-service",
                 element: <AdminAddService/>
+            },
+            {
+                path: "/admin/providers",
+                element: <h1 className="w-full h-full flex justify-center items-center text-3xl font-semibold">Coming Soon...</h1>
+            },
+            {
+                path: "/admin/users",
+                element: <h1 className="w-full h-full flex justify-center items-center text-3xl font-semibold">Coming Soon...</h1>
             }
         ]
     },
     {
         path: "/*",
-        element: <h1>404</h1>
+        element: <h1 >404</h1>
     }
 ])
 export default router;
