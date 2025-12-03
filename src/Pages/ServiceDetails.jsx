@@ -21,11 +21,11 @@ const ServiceDetails = () => {
   // Fetch service + reviews
   const fetchData = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/services/${id}`);
+      const res = await fetch(`https://warm-paws-backend.vercel.app/api/services/${id}`);
       const data = await res.json();
       setService(data);
 
-      const revRes = await fetch(`http://localhost:3000/api/reviews/service/${id}`);
+      const revRes = await fetch(`https://warm-paws-backend.vercel.app/api/reviews/service/${id}`);
       const revData = await revRes.json();
       setReviews(revData.reverse()); // newest first
     } catch (err) {
@@ -50,7 +50,7 @@ const ServiceDetails = () => {
     if (!reviewText.trim()) return;
 
     try {
-      await fetch("http://localhost:3000/api/reviews", {
+      await fetch("https://warm-paws-backend.vercel.app/api/reviews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

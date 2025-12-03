@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const API = "http://localhost:3000/api";
+const API = "https://warm-paws-backend.vercel.app/api";
 
 const AdminBookings = () => {
     const [bookings, setBookings] = useState([]);

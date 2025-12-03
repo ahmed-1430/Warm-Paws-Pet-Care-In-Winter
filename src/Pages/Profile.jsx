@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import Loader from "../Components/Loader";
 
 // API BASE URL
-const API = "http://localhost:3000/api";
+const API = "https://warm-paws-backend.vercel.app/api";
 
 const Profile = () => {
     const { user, signOutUser, userLoading } = useContext(AuthContext);

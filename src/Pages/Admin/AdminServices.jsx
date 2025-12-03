@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import Loader from "../../Components/Loader";
 import LoadingPage from "../Loading";
 
-const API = "http://localhost:3000/api";
+const API = "https://warm-paws-backend.vercel.app/api";
 
 const AdminServices = () => {
     const [services, setServices] = useState([]);

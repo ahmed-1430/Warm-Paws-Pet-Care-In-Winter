@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const API = "http://localhost:3000/api";
+const API = "https://warm-paws-backend.vercel.app/api";
 
 const AdminDashboard = () => {
     const [stats, setStats] = useState({

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import LoadingPage from "../Loading";
 
-const API = "http://localhost:3000/api";
+const API = "https://warm-paws-backend.vercel.app/api";
 
 const renderStars = (rating) => {
     return (

@@ -32,7 +32,7 @@ const router = createBrowserRouter([
             {
                 path: "",
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:3000/api/services'),
+                loader: () => fetch('https://warm-paws-backend.vercel.app/api/services'),
                 hydrateFallbackElement: <Loading></Loading>
 
             },
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
             {
                 path: "",
                 element: <Services></Services>,
-                loader: () => fetch('http://localhost:3000/api/services'),
+                loader: () => fetch('https://warm-paws-backend.vercel.app/api/services'),
                 hydrateFallbackElement: <Loading></Loading>
 
             }
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
                 path: "",
                 element: <PrivateRoute> <ServiceDetails></ServiceDetails> </PrivateRoute>,
                 loader: ({ params }) =>
-                    fetch(`http://localhost:3000/api/services/${params.id}`),
+                    fetch(`https://warm-paws-backend.vercel.app/api/services/${params.id}`),
                 hydrateFallbackElement: <Loading></Loading>,
             }
         ]

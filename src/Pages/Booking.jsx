@@ -16,7 +16,7 @@ const Booking = () => {
   useEffect(() => {
     const loadService = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/services/${serviceId}`);
+        const res = await fetch(`https://warm-paws-backend.vercel.app/api/services/${serviceId}`);
         const data = await res.json();
         setService(data);
       } catch (error) {
@@ -40,7 +40,7 @@ const Booking = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:3000/api/bookings", {
+      const response = await fetch("https://warm-paws-backend.vercel.app/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

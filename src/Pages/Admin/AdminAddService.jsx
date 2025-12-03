@@ -25,7 +25,7 @@ const AdminAddService = () => {
         setLoading(true);
 
         try {
-            await axios.post("http://localhost:3000/api/services", service);
+            await axios.post("https://warm-paws-backend.vercel.app/api/services", service);
             toast.success("Service added successfully!");
 
             // Reset fields
