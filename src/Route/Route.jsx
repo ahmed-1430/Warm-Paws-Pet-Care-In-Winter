@@ -20,6 +20,7 @@ import AdminBookings from "../Pages/Admin/AdminBookings";
 import AdminReviews from "../Pages/Admin/AdminReviews";
 import AdminAddService from "../Pages/Admin/AdminAddService";
 import AdminDashboard from "../Pages/Admin/AdminDashboard";
+import About from "../Pages/About";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
                 loader: () => fetch('http://localhost:3000/api/services'),
                 hydrateFallbackElement: <Loading></Loading>
 
+            },
+            {
+                path: "/about",
+                element: <About/>
             }
         ]
 
