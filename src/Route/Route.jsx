@@ -22,6 +22,7 @@ import AdminAddService from "../Pages/Admin/AdminAddService";
 import AdminDashboard from "../Pages/Admin/AdminDashboard";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -142,7 +143,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/*",
-        element: <h1 >404</h1>
+        element: <ErrorPage/>
     }
 ])
 export default router;
