@@ -155,7 +155,7 @@ const AdminBookings = () => {
                                         }
                                         className="px-3 py-1.5 rounded-lg text-sm 
                                         bg-green-600 text-white hover:bg-green-700 
-                                        disabled:opacity-50 transition-all shadow-sm"
+                                        disabled:opacity-50 transition-all shadow-sm cursor-pointer"
                                     >
                                         Approve
                                     </button>
@@ -167,7 +167,7 @@ const AdminBookings = () => {
                                         }
                                         className="px-3 py-1.5 rounded-lg text-sm 
                                         bg-red-600 text-white hover:bg-red-700 
-                                        disabled:opacity-50 transition-all shadow-sm"
+                                        disabled:opacity-50 transition-all shadow-sm cursor-pointer"
                                     >
                                         Reject
                                     </button>
@@ -179,7 +179,7 @@ const AdminBookings = () => {
                                         }
                                         className="px-3 py-1.5 rounded-lg text-sm 
                                         bg-gray-700 text-white hover:bg-gray-800 
-                                        disabled:opacity-50 transition-all shadow-sm"
+                                        disabled:opacity-50 transition-all shadow-sm cursor-pointer"
                                     >
                                         Reset
                                     </button>

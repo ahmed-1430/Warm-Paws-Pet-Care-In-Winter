@@ -57,7 +57,7 @@ const Navbar = () => {
 
                             {user ? (
                                 <>
-                                    <li><Link to="/dashboard" className={location.pathname === '/dashboard' ? 'active' : ''}>Dashboard</Link></li>
+                                    <li><Link to="/admin/dashboard" className={location.pathname === '/admin/dashboard' ? 'active' : ''}>Dashboard</Link></li>
                                     <li><Link to="/user/profile">My Profile</Link></li>
                                     <li><button onClick={handleLogout}>Logout</button></li>
                                 </>
@@ -90,7 +90,7 @@ const Navbar = () => {
                             <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
 
                             {user && (
-                                <li><Link to="/dashboard" className={location.pathname === '/dashboard' ? 'active' : ''}>Dashboard</Link></li>
+                                <li><Link to="/admin/dashboard" className={location.pathname === '/admin/dashboard' ? 'active' : ''}>Dashboard</Link></li>
                             )}
 
                             {!user && (

@@ -21,6 +21,7 @@ import AdminReviews from "../Pages/Admin/AdminReviews";
 import AdminAddService from "../Pages/Admin/AdminAddService";
 import AdminDashboard from "../Pages/Admin/AdminDashboard";
 import About from "../Pages/About";
+import Contact from "../Pages/Contact";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path: "/about",
                 element: <About/>
+            },
+            {
+                path: "/contact",
+                element: <Contact/>
             }
         ]
 

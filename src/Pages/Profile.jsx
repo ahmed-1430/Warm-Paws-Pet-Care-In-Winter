@@ -95,13 +95,13 @@ const Profile = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold">
-                                        {bookings.filter(b => b.status == "Pending").length}
+                                        {bookings.filter(b => b.status == "pending" || "Pending").length}
                                     </h3>
                                     <p className="text-gray-500 text-sm">Pending</p>
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold">
-                                        {bookings.filter(b => b.status == "Completed").length}
+                                        {bookings.filter(b => b.status == "approved").length}
                                     </h3>
                                     <p className="text-gray-500 text-sm">Completed</p>
                                 </div>
