@@ -1,84 +1,123 @@
-#  WarmPaws – Pet Care in Winter
+#  WarmPaws – Winter Pet Care Companion App
 
-### **Theme:** 
-A cozy winter companion platform designed for pet owners to ensure their furry friends stay warm, safe, and healthy during the cold season.
-
----
-
-##  Live Link
- [Live Site URL](https://b-12a-09-warm-paws-pet-care.web.app/)  
- [GitHub Repository](https://github.com/programming-hero-web-course2/b12-a9-firesheild-ahmed-1430)
+WarmPaws is a cozy, winter-themed pet care platform designed to help pet owners keep their furry friends warm, healthy, and safe during cold seasons. With a modern UI, guided seasonal tips, service discovery, and secure authentication, it creates a friendly digital companion for every pet lover.
 
 ---
 
-##  Project Purpose
+##  Live Demo & Repositories
 
-**WarmPaws** is a single-page React web application built to help pet owners take extra care of their furry companions during the winter season.  
-It brings together everything in one cozy interface — from **local pet care services**, **winter clothing**, **grooming options**, to **expert vet tips** — making it a friendly and reliable winter guide for pet lovers.
+ **Live Website:** https://warmpaws--pet-care-in-winter.web.app/  
+ **Backend Repository:** https://github.com/ahmed-1430/Warm-Paws-Backend
+
+---
+
+##  Project Overview
+
+WarmPaws is a single-page React application focused on **winter pet care assistance**, offering:
+
+- Winter-friendly pet services  
+- Seasonal wellness & grooming tips  
+- Expert recommendations  
+- Public dashboard for analytics & management  
+- User authentication & profile handling  
+- Service booking (login required)  
+- Smooth animations & winter aesthetics  
 
 ---
 
 ##  Key Features
 
-###  **Home Page**
-- A warm, winter-themed **hero carousel** built using **Swiper.js**.
-- **Popular Winter Services** section that dynamically displays JSON-based service data.
-- **Winter Care Tips**, **Expert Vets**, and **Winter Pet Products** sections, all animated with **AOS**.
-- Fully responsive layout across mobile, tablet, and desktop.
-
-###  **Authentication System**
-- **Login** and **Signup** pages with:
-  - Firebase Authentication
-  - Google Social Login
-  - Password validation (Uppercase, Lowercase, Min 6 chars)
-  - Password visibility toggle (eye icon)
-- **Forgot Password** functionality (redirects user to Gmail after reset).
-
-###  **Profile Management**
-- Displays user info (Name, Email, Image).
-- Functional **Update Profile** using `updateProfile()`.
-
-###  **Service Details Page**
-- Protected Route — accessible only when logged in.
-- Displays complete service info from JSON.
-- Includes **Book Service form** with success toast notifications.
-
-###  **Notifications**
-- Real-time success/error messages with **React Hot Toast**.
-
-###  **Design & Responsiveness**
-- Minimalist, modern UI with warm tones and soft shadows.
-- Subtle scroll animations powered by **AOS**.
-- Fully responsive — no crashes or reload errors on route navigation.
+###  Homepage
+- Swiper.js winter hero carousel  
+- winter services  
+- Winter care tips & expert vet highlights  
+- AOS-animated product, tips & recommendations sections  
+- Fully responsive on mobile, tablet, and desktop  
 
 ---
 
-##  Technologies Used
+###  Authentication System
+- Firebase Email/Password  
+- Google Social Login  
+- Password validation + toggle visibility  
+- Forgot Password (email-based reset)  
+- Protected routes  
 
-### **Frontend Stack**
-- React.js (Vite)
-- React Router DOM
-- Tailwind CSS / DaisyUI
+---
 
-### **Animation & Interactivity**
-- **AOS** (Animate on Scroll)
-- **Swiper.js** (for carousel/slider)
-- **React Hot Toast** (for notifications)
+###  User Profile Management
+- Display user’s name, email & avatar  
+- Update profile through Firebase `updateProfile()`  
+- Persistent login session  
+
+---
+
+###  Service Details & Booking
+- Protected Service Details page  
+- Complete winter service information  
+- Booking form with validation & toast messages  
+- Redirects to login if unauthenticated  
+
+---
+
+##  Public Dashboard (Newly Added)
+A clean, modern, **publicly accessible dashboard** built to showcase platform data visually.
+
+### **Dashboard Features**
+- View **total users**, **total services**, and **overall bookings**  
+- Dynamic data fetched directly from backend APIs  
+- Clean card-based UI design with soft winter theme  
+- Mobile-friendly responsive layout  
+- No authentication required — fully public  
+
+This dashboard helps you understand platform usage and provides a central overview for services and bookings.
+
+---
+
+###  Notifications & Feedback
+- Toast-based messages for login, logout, errors, and successful actions  
+
+---
+
+###  UI / UX & Design
+- Cozy winter aesthetic with warm tones & soft shadows  
+- Tailwind CSS + DaisyUI for a crisp, modern interface  
+- AOS animations for smooth transitions  
+- SPA-optimized routing (no crashes on page reload)  
+
+---
+
+##  Tech Stack
+
+### **Frontend**
+- React.js (Vite)  
+- React Router DOM  
+- Tailwind CSS  
+- DaisyUI  
+
+### **Animations & UI**
+- AOS  
+- Swiper.js  
+- React Hot Toast  
 
 ### **Authentication**
-- Firebase Authentication
-- Google Sign-In
-- Environment Variables for security (`.env`)
+- Firebase Authentication  
+- Google Login  
+- Environment variables for config security  
 
 ### **Deployment**
-- Hosted on **FireBase** (SPA mode, route-safe reloads)
+- Firebase Hosting  
 
 ---
 
-##  NPM Packages Used
+## NPM Packages Used
 
 | Package | Purpose |
-|----------|----------|
-| **aos** | Smooth scroll-based animations for all sections |
-| **react-hot-toast** | Success/error notifications on user actions |
-| **swiper** | Beautiful, responsive hero slider on homepage |
+|--------|---------|
+| **aos** | Smooth scroll animations |
+| **react-hot-toast** | Toast notifications |
+| **swiper** | Hero carousel/slider |
+
+---
+
+##  WarmPaws — Caring for Pets, One Winter at a Time  
