@@ -120,4 +120,3 @@ This dashboard helps you understand platform usage and provides a central overvi
 
 ---
 
-##  WarmPaws — Caring for Pets, One Winter at a Time  
